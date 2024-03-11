@@ -1,0 +1,47 @@
+extends default
+
+block content
+    
+    form.form(action='/register' method='POST')
+        div.input-register-box 
+            div.box
+                label User name
+                input#userName(placeholder='User' type='text' name='userName' required value=user)
+                if noUser
+                    p#noUserName.invalid #{textError} 
+            div.box
+                label User password
+                input#userPassword(placeholder='Pasword' type='password' name='userPassword' required)
+            div.box
+                label Password again
+                input#copyUserPassword(placeholder='Pasword again' type='password' required)
+                p#isNotOk.invalid.copyPass Password is NOT OK 🙁
+                p#isOk.valid.copyPass Password is OK! 😁
+        div.box
+            input#btn-register(type='submit' value='Register' disabled)
+
+        div.outer-register 
+            div.inner-register 
+                button(type="button" class="button-link" onclick="window.location.href='/';") Cancel
+                
+    div#message.form.validator
+        h3 Password must contain the following:
+        p#letter.invalid
+            | A 
+            b lowercase
+            |  letter
+        p#capital.invalid
+            | A 
+            b capital (uppercase)
+            |  letter
+        p#number.invalid
+            | A 
+            b number
+        p#length.invalid
+            | Minimum 
+            b 8 characters
+    
+    if error
+        p #{error}
+    
+    script(src='/script/new.js')

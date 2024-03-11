@@ -1,0 +1,30 @@
+extends default
+
+block content
+    
+    form.form(action='/' method='POST')
+        div.input-login-box
+            div.box
+                label User name
+                input#userName(placeholder='User' type='text' name='userName' required value=user)
+                if noUser
+                    p#noUserName.invalid User is not found
+            div.box
+                label User password
+                input#userPassword(placeholder='Pasword' type='password' name='userPassword' required)
+                if noPassword
+                    p#noUserPassword.invalid Password is false
+        div.box
+            input(type="submit", value="Login")
+
+        div.outer-register 
+            div.inner-register Don't you have an account?
+            div.inner-register
+                button(type="button" class="button-link" onclick="window.location.href='/register';") Register
+
+    if error
+        p #{error}
+
+    script(src='/script/login.js')
+                    
+                    
